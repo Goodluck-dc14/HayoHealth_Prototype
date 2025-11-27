@@ -1,7 +1,3 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
-
 # HayoHealth — Frontend (G-Frontend)
 
 This repository contains the frontend application built with React, Vite and TypeScript. The instructions below show every step required to get the project running locally on macOS (zsh) and how to build and preview a production bundle.
