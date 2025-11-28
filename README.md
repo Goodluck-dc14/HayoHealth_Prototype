@@ -165,3 +165,64 @@ Key files and folders:
 ---
 
 If you'd like, I can also add an `.nvmrc`, example `.env.local.example`, and a `setup` npm script to automate the steps above. Tell me which you'd prefer and I'll add them.
+
+## Project status (for submission)
+
+- Type: Frontend prototype (React + Vite).
+- Implementation summary (honest snapshot for graders):
+  - Implemented (UI / prototype): Login UI (role selection), Hospital and Insurance apps, Patient list and Add patient UI, Coverage display screens, Audit & Reports UI, Billing and Fraud UI (UI-level, mocked data).
+  - Partially implemented / mocked: Coverage verification prompts, Fraud alerts, and NFC-related UI prompts (no hardware I/O).
+  - Not implemented (backend / hardware / future work): NFC read/write (card I/O), central database sync and APIs, card issuance & deactivation workflow, AI analysis backend and models, persistent audit log storage and RBAC enforcement.
+
+## SRS Implementation Matrix (short)
+
+Below is a short mapping of SRS functional requirements to this repository's current state. Use this in your Google Doc to be explicit to graders.
+
+- FR1 (User Management): UI present (login and patient forms). Backend authentication, persistence and real registration endpoints: NOT IMPLEMENTED.
+- FR2 (Card Write/Read): UI contains prompts and copy, but no WebNFC/NDEF or hardware integration: NOT IMPLEMENTED.
+- FR3 (Central Database / Sync): No API client or fetch/axios calls; no sync implemented: NOT IMPLEMENTED.
+- FR4 (Coverage Display): UI screens exist showing coverage and contracts: IMPLEMENTED (UI only).
+- FR5 (AI Analysis): Fraud/alerts and FraudConsole exist as UI; no ML model or server-side analysis: PARTIAL / MOCKED.
+- FR6 (Audit Trail): Audit UI exists (`components/insurance/Reports.tsx`), but no persistent backend logging: PARTIAL / UI ONLY.
+- FR7 (Lost Card Replacement): Workflow is not implemented (no backend): NOT IMPLEMENTED.
+
+Non-functional (security, performance, compliance): these are backend/infrastructure concerns and are NOT IMPLEMENTED in this frontend prototype. Document them as planned in the SRS.
+
+Note about demo data: All data shown in the UI (patients, claims, audit entries, dashboard numbers, fraud alerts, etc.) are dummy/mock data included for demonstration purposes only. They are hard-coded or mocked within the frontend components and do not come from a live backend or real users. Please state this in your video when demoing the app.
+
+## Demo instructions for graders (what to show and what to say)
+
+1. Start the app and show Login: `components/common/Login.tsx`. Explain role selection (Hospital/Insurance) and that authentication is a UI prototype.
+2. Switch to Hospital role and open `HospitalApp` → `FrontDesk` (show text "Scan card to verify insurance"). Explain: this prompt is a UI placeholder for NFC card scanning — the hardware integration is planned but not part of this submission.
+3. Open `PatientList` and `AddPatient` to show patient management screens (UI flows).
+4. Open `Billing` and `FraudConsole` to show example alerts and risk indicators (UI-driven examples). Note that these are mocked examples to illustrate intended functionality.
+5. Open `InsuranceApp` → `Reports` to show the Audit Log UI (explain that persistence is not yet implemented).
+
+While demoing, narrate clearly: which parts are implemented (UI) and which are planned/backlog (NFC, backend sync, AI, audit persistence). Point graders to the SRS link and the SRS Implementation Matrix in this README.
+
+## How to describe missing features in your video (short script)
+
+Use this short script when you reach missing features in the demo:
+
+"The current submission is a frontend prototype demonstrating the user flows and UI for HayoHealth. NFC card I/O, backend synchronization, and AI analytics are planned and detailed in the SRS (linked). These features require server-side components and hardware access which are outside the scope of this frontend MVP. The SRS and the Implementation Matrix list the required work and the planned approach for integrating them in future iterations."
+
+## Quick copy-paste block for your Google Doc (personNames*[Summative]*[MMDDYYYY])
+
+Paste this block into your Google Doc and replace the placeholders with your links:
+
+```
+Project status: Frontend prototype (React + Vite). The repository implements UI flows for Login, Hospital and Insurance dashboards, patient management, coverage display, audit UI and mocked fraud/billing indicators. NFC hardware integration (card read/write), central database sync (APIs), AI analysis backend, and persistent audit logging are NOT implemented and are planned as future work (documented in the SRS).
+
+GitHub repo: <paste your public repo URL here>
+SRS (design document): <paste link to your SRS document here>
+Live URL (if available): <paste deployment URL or state 'not deployed'>
+Video link: <paste your recorded video link here>
+
+Notes to graders: The submission is a UI prototype. Where the UI references card scanning or backend syncing, those are placeholders: the architecture and implementation plan for these features are included in the SRS linked above.
+```
+
+## Final checklist before submitting the Google Doc
+
+- Make sure the GitHub repo is public and the `README.md` clearly explains how to run the project (this file).
+- Paste the exact repo URL and SRS link into the Google Doc and verify access permissions (set to "Anyone with link can view" for grading convenience).
+- In the video, explicitly state which features are UI-only vs implemented and show the screens pointed out above.
